@@ -48,8 +48,13 @@ class _StudentAssignmentPageState extends State<StudentAssignmentPage> {
       final uploadTask = storageRef.putData(_selectedFile!.bytes!);
       final taskSnapshot = await uploadTask.whenComplete(() => null);
       final uploadedFileUrl = await taskSnapshot.ref.getDownloadURL();
+
+      // Log the URL to check if it's correct
+      print("File uploaded successfully! URL: $uploadedFileUrl");
+
       final assignmentRef = FirebaseFirestore.instance.collection('assignments').doc(assignmentId);
       await assignmentRef.update({'submissions.${widget.studentId}': uploadedFileUrl});
+
       setState(() { _isAssignmentSubmitted = true; });
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Assignment submitted successfully!")));
     } catch (e) {
@@ -111,6 +116,14 @@ class _StudentAssignmentPageState extends State<StudentAssignmentPage> {
               }
 
               final submissionStatus = submittedFileUrl != null;
+
+              // Print all details for the current assignment
+              print("Assignment ID: $assignmentId");
+              print("File Name: $fileName");
+              print("File URL: $fileUrl");
+              print("Message: $message");
+              print("Student's Submitted File URL: $submittedFileUrl");
+              print("Submission Status: $submissionStatus");
 
               return Card(
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

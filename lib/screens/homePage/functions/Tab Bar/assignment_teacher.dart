@@ -454,6 +454,17 @@ class _AssignmentDownloadStatusPageState
         final studentEmail = studentData['email'] ?? 'Unknown Email';
         final submissionFileUrl = studentData['submissionFileUrl']; // Get the file URL for submission
 
+        // Print all student details
+        print("Student ID: $studentId");
+        print("Student Name: $studentName");
+        print("Class: $studentClass");
+        print("Email: $studentEmail");
+        print("Download Status: ${status ? 'Downloaded' : 'Pending'}");
+        if (isSubmission) {
+          print("Submission File URL: $submissionFileUrl");
+        }
+        print("-----------------------------");
+
         // Determine the button label based on download/submission status
         String buttonLabel;
         if (isSubmission) {

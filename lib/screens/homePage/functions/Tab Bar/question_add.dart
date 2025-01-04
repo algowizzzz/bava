@@ -100,6 +100,7 @@ class _QuestionDetailsState extends State<QuestionDetails> {
   final List<String> _questionTypes = [];
   final List<TextEditingController> _marksControllers = [];
   final List<TextEditingController> _correctAnswerControllers = [];
+  final List<List<String>> _mcqOptions = []; // To store options for MCQ
 
   @override
   void initState() {
@@ -110,6 +111,7 @@ class _QuestionDetailsState extends State<QuestionDetails> {
       _questionTypes.add('MCQ'); // Default type
       _marksControllers.add(TextEditingController());
       _correctAnswerControllers.add(TextEditingController());
+      _mcqOptions.add([]); // Initialize empty list for storing options
     }
   }
 
@@ -159,7 +161,7 @@ class _QuestionDetailsState extends State<QuestionDetails> {
           'questionType': _questionTypes[i],
           'questionText': _questionControllers[i].text,
           'mcqOptions': _questionTypes[i] == 'MCQ'
-              ? _optionControllers[i].map((c) => c.text).toList()
+              ? _mcqOptions[i] // Use the options stored in the list
               : [],
           'correctAnswer': _correctAnswerControllers[i].text,
           'marksOfQn': int.tryParse(_marksControllers[i].text) ?? 0,
@@ -228,6 +230,11 @@ class _QuestionDetailsState extends State<QuestionDetails> {
                       TextFormField(
                         controller: _optionControllers[i][j],
                         decoration: InputDecoration(labelText: 'Option ${j + 1}'),
+                        onChanged: (value) {
+                          setState(() {
+                            _mcqOptions[i] = _optionControllers[i].map((controller) => controller.text).toList();
+                          });
+                        },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter option ${j + 1}';
@@ -235,16 +242,28 @@ class _QuestionDetailsState extends State<QuestionDetails> {
                           return null;
                         },
                       ),
-                  TextFormField(
-                    controller: _correctAnswerControllers[i],
-                    decoration: const InputDecoration(labelText: 'Correct Answer'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter the correct answer';
-                      }
-                      return null;
-                    },
-                  ),
+                  if (_questionTypes[i] == 'MCQ')
+                    DropdownButtonFormField<String>(
+                      value: _correctAnswerControllers[i].text.isEmpty ? null : _correctAnswerControllers[i].text,
+                      decoration: const InputDecoration(labelText: 'Correct Answer'),
+                      items: _mcqOptions[i].map((option) {
+                        return DropdownMenuItem<String>(
+                          value: option,
+                          child: Text(option),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          _correctAnswerControllers[i].text = value ?? '';
+                        });
+                      },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please select the correct answer';
+                        }
+                        return null;
+                      },
+                    ),
                   TextFormField(
                     controller: _marksControllers[i],
                     decoration: const InputDecoration(labelText: 'Marks for Question'),
