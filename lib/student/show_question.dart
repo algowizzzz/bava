@@ -16,6 +16,38 @@
       double totalScore = 0;
       bool showResults = false;
 
+      Future<void> _saveScore(double score) async {
+        DocumentReference studentRef = _firestore
+            .collection('students')
+            .doc(widget.studentId)
+            .collection('quizzes')
+            .doc(widget.quizzId);
+        DocumentSnapshot studentDoc = await studentRef.get();
+
+        if (studentDoc.exists) {
+          Map<String, dynamic> data = studentDoc.data() as Map<String, dynamic>;
+          double maxScore = data['maxScore'] ?? 0.0;
+          if (score > maxScore) {
+            await studentRef.update({
+              'currentScore': score,
+              'maxScore': score,
+              'lastAttempt': DateTime.now(),
+            });
+          } else {
+            await studentRef.update({
+              'currentScore': score,
+              'lastAttempt': DateTime.now(),
+            });
+          }
+        } else {
+          await studentRef.set({
+            'currentScore': score,
+            'maxScore': score,
+            'lastAttempt': DateTime.now(),
+          });
+        }
+      }
+
       void _calculateScore() async {
         if (selectedAnswers.length != await _firestore
             .collection('quizzes')
@@ -49,7 +81,7 @@
             score += marks;
           }
         }
-
+        await _saveScore(score);
         showDialog(
           context: context,
           barrierDismissible: false,
@@ -80,10 +112,10 @@
               ),
               actions: [
                 TextButton(
-                  child: const Text('Back to Previous Page'),
+                  child: const Text('OK'),
                   onPressed: () {
-                    Navigator.of(context).pop(); // Close dialog
-                    Navigator.of(context).pop(); // Go back to previous page
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(); 
                   },
                 ),
               ],
