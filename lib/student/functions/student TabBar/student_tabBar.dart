@@ -5,6 +5,7 @@ import 'package:chatbot/student/functions/student%20TabBar/question_show.dart';
 import 'package:chatbot/student/functions/student%20TabBar/student_book_page.dart';
 import 'package:chatbot/student/functions/student%20TabBar/student_chat_page.dart';
 import 'package:chatbot/student/functions/student%20TabBar/student_class_history.dart';
+import 'package:chatbot/student/student_quizz_list.dart';
 import 'package:flutter/material.dart';
 
 import 'assignment_page.dart';
@@ -74,7 +75,8 @@ class _studentTabBarState extends State<studentTabBar> {
               StudentHistoryPage(className: widget.className, subject: widget.subject, studentId:widget.studentId,),
               StudentAssignmentPage(studentId: widget.studentId,),
               studentBookPage(),
-              QuestionShow(),
+              //QuestionShow(),
+              StudentQuizzList(classname: widget.className, subject: widget.subject, studentId: widget.studentId),
               studentsChatPage(className: widget.className, subjects: widget.subject)
 
             ],

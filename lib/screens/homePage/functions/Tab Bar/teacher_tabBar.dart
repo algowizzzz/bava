@@ -75,7 +75,7 @@ class _teacherTabBarState extends State<teacherTabBar> {
             children: [
               ClassHistoryPage(classname: widget.className, subject: widget.subject),
               booksPage(),
-              QuestionAdd(),
+              QuestionAdd(classname: widget.className, subject: widget.subject),
               AssignmentUploadPage(classname: widget.className, subject: widget.subject),
               StudentDetailsPage(classname: widget.className, subject: widget.subject,),
               ChatPage(className: widget.className, subjects: widget.subject,)
