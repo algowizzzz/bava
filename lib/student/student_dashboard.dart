@@ -543,7 +543,7 @@ class _studentDashboardState extends State<studentDashboard> {
         title: 'Notifications',
         gradientColors: [Colors.lightGreen, Colors.green],
         onTap: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => notification())),
+            context, MaterialPageRoute(builder: (context) => NotificationDisplay())),
       ),
       _dashboardCard(
         icon: Icons.note,

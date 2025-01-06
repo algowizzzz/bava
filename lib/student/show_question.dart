@@ -146,11 +146,11 @@
                 children: [
                   Expanded(
                     child: ListView.builder(
-                      reverse: true,
                       padding: const EdgeInsets.all(16.0),
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
-                        var questionData = snapshot.data!.docs[index].data()
+                        var actualIndex = snapshot.data!.docs.length - 1 - index;
+                        var questionData = snapshot.data!.docs[actualIndex].data()
                             as Map<String, dynamic>;
                         var questionId = questionData['questionId'] ?? '';
                         var mcqOptions =
@@ -172,7 +172,7 @@
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Question ${snapshot.data!.docs.length - index}',
+                                      'Question ${index + 1}',
                                       style: const TextStyle(
                                         color: Colors.blue,
                                         fontWeight: FontWeight.bold,

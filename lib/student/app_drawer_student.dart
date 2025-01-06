@@ -18,7 +18,13 @@ class AppDrawerStudent extends StatelessWidget {
   final String name;
   final String email;
   final int age;
-  const AppDrawerStudent({super.key, required this.className, required this.studentId, required this.name, required this.email, required this.age});
+  const AppDrawerStudent(
+      {super.key,
+      required this.className,
+      required this.studentId,
+      required this.name,
+      required this.email,
+      required this.age});
   void _navigateTo(BuildContext context, Widget page) {
     if (!Navigator.canPop(context)) {
       Navigator.pop(context);
@@ -42,7 +48,8 @@ class AppDrawerStudent extends StatelessWidget {
           ),
           TextButton(
             onPressed: () async {
-              await SharedPreferences.getInstance().then((prefs) => prefs.clear());
+              await SharedPreferences.getInstance()
+                  .then((prefs) => prefs.clear());
               Navigator.pop(context);
               Navigator.pushReplacement(
                 context,
@@ -62,7 +69,6 @@ class AppDrawerStudent extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-
           Card(
             elevation: 8,
             shape: RoundedRectangleBorder(
@@ -114,8 +120,8 @@ class AppDrawerStudent extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.slideshow),
               title: const Text('Review Question'),
-              onTap: () => _navigateTo(context, ReviewQuestionPage(
-                  studentId: '', classNAme: '')),
+              onTap: () => _navigateTo(
+                  context, ReviewQuestionPage(studentId: '', classNAme: '')),
             ),
           ),
           Card(
@@ -126,7 +132,8 @@ class AppDrawerStudent extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.description),
               title: const Text('Topic Explanation'),
-              onTap: () => _navigateTo(context, TopicExplanationPage(className: '')),
+              onTap: () =>
+                  _navigateTo(context, TopicExplanationPage(className: '')),
             ),
           ),
           Card(
@@ -137,7 +144,8 @@ class AppDrawerStudent extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.build),
               title: const Text('Essay Evaluation'),
-              onTap: () => _navigateTo(context, EssayEvaluationPage(className: '')),
+              onTap: () =>
+                  _navigateTo(context, EssayEvaluationPage(className: '')),
             ),
           ),
           Card(
@@ -159,7 +167,7 @@ class AppDrawerStudent extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.message),
               title: const Text('Notification'),
-              onTap: () => _navigateTo(context, notification()),
+              onTap: () => _navigateTo(context, NotificationDisplay()),
             ),
           ),
           Card(
@@ -170,7 +178,7 @@ class AppDrawerStudent extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.person),
               title: const Text('View Profile'),
-              onTap: () => _navigateTo(context,  ProfilePage()),
+              onTap: () => _navigateTo(context, ProfilePage()),
             ),
           ),
           Card(

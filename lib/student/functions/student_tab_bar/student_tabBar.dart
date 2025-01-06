@@ -1,7 +1,7 @@
 import 'package:chatbot/student/functions/student_tab_bar/student_book_page.dart';
 import 'package:chatbot/student/functions/student_tab_bar/student_chat_page.dart';
 import 'package:chatbot/student/functions/student_tab_bar/student_class_history.dart';
-import 'package:chatbot/student/student_quizz_list.dart';
+import 'package:chatbot/student/functions/student_tab_bar/student_quizz_list.dart';
 import 'package:flutter/material.dart';
 
 import 'assignment_page.dart';

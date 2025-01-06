@@ -24,7 +24,13 @@ class AppDrawerStudentDesktop extends StatelessWidget {
   final String name;
   final String email;
   final int age;
-  const AppDrawerStudentDesktop({super.key, required this.className, required this.studentId, required this.name, required this.email, required this.age});
+  const AppDrawerStudentDesktop(
+      {super.key,
+      required this.className,
+      required this.studentId,
+      required this.name,
+      required this.email,
+      required this.age});
   void _navigateTo(BuildContext context, Widget page) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
@@ -116,8 +122,8 @@ class AppDrawerStudentDesktop extends StatelessWidget {
           child: ListTile(
             leading: const Icon(Icons.slideshow, color: Colors.blue),
             title: const Text('Review Question'),
-            onTap: () => _navigateTo(context, ReviewQuestionPage(
-                studentId: '', classNAme: '')),
+            onTap: () => _navigateTo(
+                context, ReviewQuestionPage(studentId: '', classNAme: '')),
           ),
         ),
         Card(
@@ -128,7 +134,8 @@ class AppDrawerStudentDesktop extends StatelessWidget {
           child: ListTile(
             leading: const Icon(Icons.description, color: Colors.blue),
             title: const Text('Topic Explanation'),
-            onTap: () => _navigateTo(context,  TopicExplanationPage(className: '')),
+            onTap: () =>
+                _navigateTo(context, TopicExplanationPage(className: '')),
           ),
         ),
         Card(
@@ -139,7 +146,8 @@ class AppDrawerStudentDesktop extends StatelessWidget {
           child: ListTile(
             leading: const Icon(Icons.build, color: Colors.blue),
             title: const Text('Essay Evaluation'),
-            onTap: () => _navigateTo(context, EssayEvaluationPage(className: '')),
+            onTap: () =>
+                _navigateTo(context, EssayEvaluationPage(className: '')),
           ),
         ),
         Card(
@@ -149,9 +157,9 @@ class AppDrawerStudentDesktop extends StatelessWidget {
           ),
           child: ListTile(
             leading:
-            const Icon(Icons.settings_applications, color: Colors.blue),
+                const Icon(Icons.settings_applications, color: Colors.blue),
             title: const Text('Notification'),
-            onTap: () => _navigateTo(context, notification()),
+            onTap: () => _navigateTo(context, NotificationDisplay()),
           ),
         ),
         Card(
@@ -192,5 +200,4 @@ class AppDrawerStudentDesktop extends StatelessWidget {
       ],
     );
   }
-
 }
