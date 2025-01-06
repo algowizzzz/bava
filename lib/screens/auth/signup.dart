@@ -1,6 +1,6 @@
 import 'package:chatbot/main.dart';
 import 'package:chatbot/model/teacherModel.dart';
-import 'package:chatbot/screens/homePage/dashboard.dart';
+import 'package:chatbot/screens/home_page/dashboard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

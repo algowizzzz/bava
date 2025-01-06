@@ -8,14 +8,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
-import '../screens/homePage/functions/handout.dart';
-import '../screens/homePage/functions/Tab Bar/studentDetails.dart';
+import '../screens/home_page/functions/handout.dart';
+import '../screens/home_page/functions/Tab_Bar/studentDetails.dart';
 import '../tab_bar.dart';
 import 'functions/chatpdf/upload_pdf.dart';
 import 'functions/essay_evaluation.dart';
 import 'functions/notification.dart';
 import 'functions/review_questions.dart';
-import 'functions/student TabBar/student_tabBar.dart';
+import 'functions/student_tab_bar/student_tabBar.dart';
 import 'functions/topic_explanation.dart';
 
 class studentDashboard extends StatefulWidget {
@@ -32,15 +32,15 @@ class _studentDashboardState extends State<studentDashboard> {
   late String name;
   late int age;
   late String email;
-  bool isLoading=true;
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
     classname = '';
-    name='';
-    age=0;
-    email='';
+    name = '';
+    age = 0;
+    email = '';
     _getCurrentUserId();
     _loadStudentData();
   }
@@ -58,8 +58,7 @@ class _studentDashboardState extends State<studentDashboard> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(
-                    context);
+                Navigator.pop(context);
               },
               child: const Text("Cancel"),
             ),
@@ -86,8 +85,6 @@ class _studentDashboardState extends State<studentDashboard> {
   }
 
   Future<void> _getCurrentUserId() async {
-
-
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       setState(() {
@@ -96,16 +93,14 @@ class _studentDashboardState extends State<studentDashboard> {
     } else {
       print('User is not authenticated');
     }
-
   }
 
   @override
   List<Map<String, String>> _studentData = [];
 
   Future<void> _loadStudentData() async {
-
     setState(() {
-      isLoading=true;
+      isLoading = true;
     });
     final snapshot = await FirebaseFirestore.instance
         .collection('students')
@@ -118,7 +113,7 @@ class _studentDashboardState extends State<studentDashboard> {
       });
     }
     setState(() {
-      isLoading=false;
+      isLoading = false;
     });
   }
 
@@ -131,7 +126,17 @@ class _studentDashboardState extends State<studentDashboard> {
 
         return Scaffold(
           extendBodyBehindAppBar: false,
-          drawer: MediaQuery.of(context).size.width < 600 ? isLoading? CircularProgressIndicator(): AppDrawerStudent(className: classname, studentId: widget.studentId, name: name, email: email, age: age,) : null,
+          drawer: MediaQuery.of(context).size.width < 600
+              ? isLoading
+                  ? CircularProgressIndicator()
+                  : AppDrawerStudent(
+                      className: classname,
+                      studentId: widget.studentId,
+                      name: name,
+                      email: email,
+                      age: age,
+                    )
+              : null,
           appBar: AppBar(
             flexibleSpace: Container(
               decoration: BoxDecoration(
@@ -155,8 +160,8 @@ class _studentDashboardState extends State<studentDashboard> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ProfilePage(
-                            studentId: widget.studentId)),
+                        builder: (context) =>
+                            ProfilePage(studentId: widget.studentId)),
                   );
                 },
               ),
@@ -164,15 +169,16 @@ class _studentDashboardState extends State<studentDashboard> {
                 icon: const Icon(Icons.logout, color: Colors.white, size: 28),
                 onPressed: () => _showLogoutDialog(context),
               ),
-            ],            title: Text(
-            'Student Dashboard',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.2,
+            ],
+            title: Text(
+              'Student Dashboard',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1.2,
+              ),
             ),
-          ),
             centerTitle: true,
           ),
           body: Container(
@@ -185,13 +191,18 @@ class _studentDashboardState extends State<studentDashboard> {
             ),
             child: Row(
               children: [
-
                 if (constraints.maxWidth >= 600)
                   SizedBox(
                       width: MediaQuery.of(context).size.width < 1200
                           ? constraints.maxWidth * 0.27
                           : constraints.maxWidth * 0.18,
-                      child:  AppDrawerStudentDesktop(className: classname, studentId: widget.studentId, name: name, email: email, age: age,)),
+                      child: AppDrawerStudentDesktop(
+                        className: classname,
+                        studentId: widget.studentId,
+                        name: name,
+                        email: email,
+                        age: age,
+                      )),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Padding(
@@ -202,21 +213,23 @@ class _studentDashboardState extends State<studentDashboard> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const  SizedBox(height: 10,),
-
+                          const SizedBox(
+                            height: 10,
+                          ),
                           CarouselSlider(
                             options: CarouselOptions(
                               height: MediaQuery.of(context).size.width >= 600
                                   ? MediaQuery.of(context).size.height * 0.45
                                   : MediaQuery.of(context).size.height * 0.2,
-                              aspectRatio: 16/9,
+                              aspectRatio: 16 / 9,
                               viewportFraction: 1.0,
                               initialPage: 0,
                               enableInfiniteScroll: true,
                               reverse: false,
                               autoPlay: true,
                               autoPlayInterval: Duration(seconds: 3),
-                              autoPlayAnimationDuration: Duration(milliseconds: 800),
+                              autoPlayAnimationDuration:
+                                  Duration(milliseconds: 800),
                               autoPlayCurve: Curves.fastOutSlowIn,
                               enlargeCenterPage: true,
                               scrollDirection: Axis.horizontal,
@@ -256,11 +269,11 @@ class _studentDashboardState extends State<studentDashboard> {
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: maxHeight * 0.02),
+                            padding: EdgeInsets.symmetric(
+                                vertical: maxHeight * 0.02),
                             child: const Text(
                               'Welcome Back Student name',
                               style: TextStyle(
@@ -271,8 +284,6 @@ class _studentDashboardState extends State<studentDashboard> {
                               ),
                             ),
                           ),
-
-
                           Card(
                             elevation: 8,
                             shape: RoundedRectangleBorder(
@@ -286,52 +297,76 @@ class _studentDashboardState extends State<studentDashboard> {
                                   _buildSectionHeader("Classes"),
                                   SizedBox(height: maxHeight * 0.02),
                                   Container(
-
-
-
-                                      child:  _studentData.isEmpty
+                                      child: _studentData.isEmpty
                                           ? Center(
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                          AlwaysStoppedAnimation<Color>(
-                                              Colors.blueGrey),
-                                        ),
-                                      )
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(Colors.blueGrey),
+                                              ),
+                                            )
                                           : GridView.builder(
-                                        padding: const  EdgeInsets.symmetric(vertical: 8),
-                                        gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: constraints.maxWidth < 600
-                                              ? 2
-                                              : crossAxisCount,
-                                          crossAxisSpacing: 20,
-                                          mainAxisSpacing: 15,
-                                          childAspectRatio: constraints.maxWidth /
-                                              ((constraints.maxWidth < 600
-                                                  ? 2
-                                                  : crossAxisCount) *
-                                                  100),
-                                        ),
-                                        shrinkWrap: true,
-                                        physics: const NeverScrollableScrollPhysics(),
-
-                                        itemCount: _studentData.length,
-                                        itemBuilder: (context, index) =>
-                                            _buildClassSubjectCard(
-                                                context, _studentData[index]),
-                                      )
-                                  ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 8),
+                                              gridDelegate:
+                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount:
+                                                    constraints.maxWidth < 600
+                                                        ? 2
+                                                        : crossAxisCount,
+                                                crossAxisSpacing: 20,
+                                                mainAxisSpacing: 15,
+                                                childAspectRatio: constraints
+                                                        .maxWidth /
+                                                    ((constraints.maxWidth < 600
+                                                            ? 2
+                                                            : crossAxisCount) *
+                                                        100),
+                                              ),
+                                              shrinkWrap: true,
+                                              physics:
+                                                  const NeverScrollableScrollPhysics(),
+                                              itemCount: _studentData.length,
+                                              itemBuilder: (context, index) =>
+                                                  _buildClassSubjectCard(
+                                                      context,
+                                                      _studentData[index]),
+                                            )),
                                   SizedBox(height: maxHeight * 0.03),
                                   _buildSectionHeader("Features"),
                                   SizedBox(height: maxHeight * 0.03),
                                   GridView.count(
-                                    crossAxisCount: MediaQuery.of(context).size.width < 600 ? 2 :
-                                    MediaQuery.of(context).size.width < 1000 ? 3 :
-                                    MediaQuery.of(context).size.width < 1400 ? 4 :
-                                    MediaQuery.of(context).size.width < 1800 ? 5 :
-                                    MediaQuery.of(context).size.width < 2200 ? 6 : 7,
-                                    crossAxisSpacing: MediaQuery.of(context).size.width * 0.03,
-                                    mainAxisSpacing: MediaQuery.of(context).size.width * 0.03,
+                                    crossAxisCount:
+                                        MediaQuery.of(context).size.width < 600
+                                            ? 2
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .width <
+                                                    1000
+                                                ? 3
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        1400
+                                                    ? 4
+                                                    : MediaQuery.of(context)
+                                                                .size
+                                                                .width <
+                                                            1800
+                                                        ? 5
+                                                        : MediaQuery.of(context)
+                                                                    .size
+                                                                    .width <
+                                                                2200
+                                                            ? 6
+                                                            : 7,
+                                    crossAxisSpacing:
+                                        MediaQuery.of(context).size.width *
+                                            0.03,
+                                    mainAxisSpacing:
+                                        MediaQuery.of(context).size.width *
+                                            0.03,
                                     childAspectRatio: 1.2,
                                     shrinkWrap: true,
                                     children: _buildFeatureCards(context),
@@ -414,7 +449,7 @@ class _studentDashboardState extends State<studentDashboard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => studentTabBar(
+            builder: (context) => StudentTabBar(
               className: pair['class']!,
               subject: pair['subject']!,
               studentId: widget.studentId,
@@ -507,11 +542,8 @@ class _studentDashboardState extends State<studentDashboard> {
         icon: Icons.notifications_active,
         title: 'Notifications',
         gradientColors: [Colors.lightGreen, Colors.green],
-        onTap: () =>Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    notification())),
+        onTap: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => notification())),
       ),
       _dashboardCard(
         icon: Icons.note,
@@ -544,15 +576,27 @@ class _studentDashboardState extends State<studentDashboard> {
   }) {
     return LayoutBuilder(builder: (context, constraints) {
       final screenWidth = MediaQuery.of(context).size.width;
-      final iconSize = screenWidth < 600 ? 24.0 :
-      screenWidth < 1000 ? 28.0 :
-      screenWidth < 1400 ? 32.0 : 36.0;
-      final fontSize = screenWidth < 600 ? 11.0 :
-      screenWidth < 1000 ? 12.0 :
-      screenWidth < 1400 ? 13.0 : 14.0;
-      final padding = screenWidth < 600 ? 8.0 :
-      screenWidth < 1000 ? 12.0 :
-      screenWidth < 1400 ? 16.0 : 20.0;
+      final iconSize = screenWidth < 600
+          ? 24.0
+          : screenWidth < 1000
+              ? 28.0
+              : screenWidth < 1400
+                  ? 32.0
+                  : 36.0;
+      final fontSize = screenWidth < 600
+          ? 11.0
+          : screenWidth < 1000
+              ? 12.0
+              : screenWidth < 1400
+                  ? 13.0
+                  : 14.0;
+      final padding = screenWidth < 600
+          ? 8.0
+          : screenWidth < 1000
+              ? 12.0
+              : screenWidth < 1400
+                  ? 16.0
+                  : 20.0;
 
       return GestureDetector(
         onTap: onTap,

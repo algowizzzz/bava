@@ -1,6 +1,6 @@
 import 'package:chatbot/main.dart';
 import 'package:chatbot/model/historyModel.dart';
-import 'package:chatbot/screens/homePage/functions/pdf_generator.dart';
+import 'package:chatbot/screens/home_page/functions/pdf_generator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

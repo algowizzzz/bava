@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../../model/classModel.dart';
 import '../../../model/historyModel.dart';
 import '../../../model/teacherModel.dart';
-import '../../forgot password/createnewpswrd.dart';
-import '../../homePage/functions/Tab Bar/class_history.dart';
+import '../../forgot_password/createnewpswrd.dart';
+import '../../home_page/functions/Tab_Bar/class_history.dart';
 import 'edit_profile.dart';
 
 class ProfilePage extends StatefulWidget {

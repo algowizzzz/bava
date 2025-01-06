@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../main.dart';
-import '../screens/forgot password/forgotpassword1.dart';
+import '../screens/forgot_password/forgotpassword1.dart';
 
 class SimpleStudentLoginScreen extends StatefulWidget {
   @override

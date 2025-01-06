@@ -79,6 +79,7 @@ class _StudentQuizzListState extends State<StudentQuizzList> {
             }
 
             return ListView.builder(
+              reverse: true,
               padding: const EdgeInsets.all(16.0),
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {

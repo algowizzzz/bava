@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../model/classModel.dart';
 import '../../../model/historyModel.dart';
-import 'Tab Bar/class_history.dart';
+import 'Tab_Bar/class_history.dart';
 import '../../auth/profile/profile_page.dart';
-import 'Tab Bar/teacher_tabBar.dart';
+import 'Tab_Bar/teacher_tabBar.dart';
 
 class ClassesPage extends StatefulWidget {
   @override

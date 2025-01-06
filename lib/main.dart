@@ -1,5 +1,5 @@
 import 'package:chatbot/screens/auth/login_screen.dart';
-import 'package:chatbot/screens/homePage/dashboard.dart';
+import 'package:chatbot/screens/home_page/dashboard.dart';
 import 'package:chatbot/student/student_dashboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -8,7 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Admin/admin_panel.dart';
+import 'admin/admin_panel.dart';
 import 'services/Themes.dart';
 import 'services/themeNotifier.dart';
 

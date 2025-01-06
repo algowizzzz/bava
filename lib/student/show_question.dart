@@ -146,6 +146,7 @@
                 children: [
                   Expanded(
                     child: ListView.builder(
+                      reverse: true,
                       padding: const EdgeInsets.all(16.0),
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -171,7 +172,7 @@
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Question ${index + 1}',
+                                      'Question ${snapshot.data!.docs.length - index}',
                                       style: const TextStyle(
                                         color: Colors.blue,
                                         fontWeight: FontWeight.bold,
@@ -200,6 +201,7 @@
                                   style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
+                                    color: Colors.black
                                   ),
                                 ),
                                 const SizedBox(height: 16),

@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../model/historyModel.dart';
 import '../model/teacherModel.dart';
-import '../screens/homePage/functions/Tab Bar/class_history.dart';
+import '../screens/home_page/functions/Tab_Bar/class_history.dart';
 import '../student/functions/teacher_details_view.dart';
 import 'teacher_details.dart';
 

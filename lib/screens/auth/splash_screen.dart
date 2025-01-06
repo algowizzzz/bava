@@ -1,5 +1,5 @@
 import 'dart:async'; // Import Timer
-import 'package:chatbot/screens/homePage/dashboard.dart';
+import 'package:chatbot/screens/home_page/dashboard.dart';
 import 'package:chatbot/screens/auth/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

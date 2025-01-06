@@ -3,12 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../Admin/Admin_dashboard.dart';
-import '../../Admin/admin_panel.dart';
-import '../../Admin/tab_admin.dart';
+import '../../admin/Admin_dashboard.dart';
+import '../../admin/admin_panel.dart';
+import '../../admin/tab_admin.dart';
 import '../../student/student_dashboard.dart';
-import '../homePage/dashboard.dart';
-import '../forgot password/forgotpassword1.dart';
+import '../home_page/dashboard.dart';
+import '../forgot_password/forgotpassword1.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

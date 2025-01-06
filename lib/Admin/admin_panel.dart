@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:chatbot/Admin/Admin_dashboard.dart';
-import 'package:chatbot/Admin/students.dart';
+import 'package:chatbot/admin/Admin_dashboard.dart';
+import 'package:chatbot/admin/students.dart';
 import 'package:chatbot/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

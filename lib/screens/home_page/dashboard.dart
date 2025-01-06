@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chatbot/main.dart';
-import 'package:chatbot/screens/homePage/app_drawer_desktop.dart';
+import 'package:chatbot/screens/home_page/app_drawer_desktop.dart';
 import 'package:chatbot/student/functions/notification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../model/historyModel.dart';
 import 'appDrawer.dart';
-import 'functions/Tab Bar/teacher_tabBar.dart';
+import 'functions/Tab_Bar/teacher_tabBar.dart';
 import 'functions/applications_realLife.dart';
 import 'functions/context_builder.dart';
 import 'functions/lesson_planner.dart';
 import '../gemini/myHomePage.dart';
-import 'package:chatbot/screens/homePage/functions/handout.dart';
-import 'package:chatbot/screens/homePage/functions/ppt_generator.dart';
+import 'package:chatbot/screens/home_page/functions/handout.dart';
+import 'package:chatbot/screens/home_page/functions/ppt_generator.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);

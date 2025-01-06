@@ -1,11 +1,11 @@
 import 'package:chatbot/screens/auth/login_screen.dart';
 import 'package:chatbot/screens/auth/profile/profile_page.dart';
-import 'package:chatbot/screens/homePage/functions/applications_realLife.dart';
-import 'package:chatbot/screens/homePage/functions/context_builder.dart';
-import 'package:chatbot/screens/homePage/functions/handout.dart';
-import 'package:chatbot/screens/homePage/functions/lesson_planner.dart';
-import 'package:chatbot/screens/homePage/functions/ppt_generator.dart';
-import 'package:chatbot/screens/homePage/functions/view_clasess.dart';
+import 'package:chatbot/screens/home_page/functions/applications_realLife.dart';
+import 'package:chatbot/screens/home_page/functions/context_builder.dart';
+import 'package:chatbot/screens/home_page/functions/handout.dart';
+import 'package:chatbot/screens/home_page/functions/lesson_planner.dart';
+import 'package:chatbot/screens/home_page/functions/ppt_generator.dart';
+import 'package:chatbot/screens/home_page/functions/view_clasess.dart';
 import 'package:chatbot/student/functions/notification.dart';
 import 'package:chatbot/tab_bar.dart';
 import 'package:flutter/material.dart';

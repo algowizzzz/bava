@@ -1,11 +1,8 @@
-import 'package:chatbot/Admin/students.dart';
+import 'package:chatbot/admin/students.dart';
 import 'package:chatbot/main.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../screens/auth/login_screen.dart';
-import '../screens/homePage/functions/Tab Bar/studentDetails.dart';
-import '../tab_bar.dart';
 import 'Admin_dashboard.dart';
 
 

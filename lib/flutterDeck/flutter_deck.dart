@@ -1,9 +1,9 @@
-import 'package:chatbot/flutterDeck/slides/big_fact_slide.dart';
-import 'package:chatbot/flutterDeck/slides/blank_slide.dart';
-import 'package:chatbot/flutterDeck/slides/image_slide.dart';
-import 'package:chatbot/flutterDeck/slides/layout_structure_slide.dart';
-import 'package:chatbot/flutterDeck/slides/split_slide.dart';
-import 'package:chatbot/flutterDeck/slides/title_slide.dart';
+import 'package:chatbot/flutterdeck/slides/big_fact_slide.dart';
+import 'package:chatbot/flutterdeck/slides/blank_slide.dart';
+import 'package:chatbot/flutterdeck/slides/image_slide.dart';
+import 'package:chatbot/flutterdeck/slides/layout_structure_slide.dart';
+import 'package:chatbot/flutterdeck/slides/split_slide.dart';
+import 'package:chatbot/flutterdeck/slides/title_slide.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_deck/flutter_deck.dart';
 
