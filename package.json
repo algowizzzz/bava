@@ -1,0 +1,13 @@
+{
+  "name": "firebase-to-mongodb-migration",
+  "version": "1.0.0",
+  "description": "Script to migrate data from Firebase Firestore to MongoDB Atlas",
+  "main": "firebase-to-mongodb.js",
+  "scripts": {
+    "migrate": "node firebase-to-mongodb.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.10.1",
+    "mongodb": "^5.7.0"
+  }
+}

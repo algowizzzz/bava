@@ -1,0 +1,999 @@
+{
+  "Teacher": [
+    {
+      "password": "tecza123",
+      "schoolId": "school_123",
+      "name": "Tecza",
+      "id": "1x4HGDMREcZglMXIRDtEaQw7XNv2",
+      "isAdmin": false,
+      "email": "teczatechnologies@gmail.com",
+      "classList": [
+        "ED8dcqnrrumu8yx7elGc"
+      ],
+      "_id": "1x4HGDMREcZglMXIRDtEaQw7XNv2"
+    },
+    {
+      "password": "abcd123",
+      "schoolId": "school_123",
+      "name": "abcd",
+      "id": "A7mxdF8m3DabYR1GTVVF6CnfbR92",
+      "isAdmin": false,
+      "email": "abcd@gmail.com",
+      "classList": [],
+      "_id": "A7mxdF8m3DabYR1GTVVF6CnfbR92"
+    },
+    {
+      "password": "tec123",
+      "schoolId": "school_123",
+      "name": "Tecza",
+      "id": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+      "isAdmin": false,
+      "email": "tec@gmail.com",
+      "classList": [
+        "oUsrP2p5D3AcWZOXohQ6",
+        "M3ouUWyet7Px0tpoRJcb",
+        "d50zdKK4I68lWXcVh99S",
+        "A1ELMiyU9p31jni0Ib9g",
+        "GboE8RCxuIw9oC6qXAvJ",
+        "SZAMsSnX21nOxeoCUCPS",
+        "DoGFqoytmQ1ohkkjhk4d"
+      ],
+      "_id": "FmxxuILRL6WdKPZSzeZWQXKTV0t2"
+    },
+    {
+      "password": "manu123",
+      "name": "manu",
+      "id": "NJjJ3uJGc2NFR1dSm6N7EHudhho2",
+      "isAdmin": false,
+      "email": "manu@gmail.com",
+      "schoolId": "school_111",
+      "classList": [
+        "SSuMvohFMFQBD4qEkHDt",
+        "mImQXmBQ0qChnBvrIGtw"
+      ],
+      "_id": "NJjJ3uJGc2NFR1dSm6N7EHudhho2"
+    },
+    {
+      "password": "12345abc",
+      "name": "Test",
+      "id": "S85npIY4d3VnItrIEJnwWFinrEn1",
+      "email": "abc@test.com",
+      "isAdmin": true,
+      "schoolId": "school_111",
+      "_id": "S85npIY4d3VnItrIEJnwWFinrEn1"
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "className1": "10A",
+      "subject1": "maths",
+      "className2": "",
+      "subject2": "",
+      "className3": "",
+      "subject3": "",
+      "className4": "",
+      "subject4": "",
+      "className5": "",
+      "subject5": "",
+      "className6": "",
+      "subject6": "",
+      "className7": "",
+      "subject7": "",
+      "_id": "eMtBWHWv3Ji9y2bSKFe5"
+    },
+    {
+      "classList": [],
+      "id": "eWLWUUuyLrZ4Ik2NpDOVnzOe9h93",
+      "name": "test",
+      "email": "test@gmail.com",
+      "password": "test123",
+      "isAdmin": true,
+      "schoolId": "school_123",
+      "_id": "eWLWUUuyLrZ4Ik2NpDOVnzOe9h93"
+    },
+    {
+      "schoolId": "school_123",
+      "name": "Admin",
+      "id": "fdbaW8WOzGWhiaHrxEzlyGmHPxg1",
+      "email": "tecza@gmail.com",
+      "isAdmin": true,
+      "classList": [],
+      "password": "tecza123",
+      "_id": "fdbaW8WOzGWhiaHrxEzlyGmHPxg1"
+    },
+    {
+      "password": "teacher123",
+      "schoolId": "school_123",
+      "name": "teacher",
+      "id": "k0Dj7vIUEBStR7vHkli7CxtYU3o1",
+      "isAdmin": false,
+      "email": "teacher@gmail.com",
+      "classList": [
+        "0U2adYZcQJOtfYv6UzkY"
+      ],
+      "_id": "k0Dj7vIUEBStR7vHkli7CxtYU3o1"
+    },
+    {
+      "classList": [],
+      "password": "aaa123",
+      "schoolId": "school_123",
+      "name": "aaa",
+      "id": "qWxVyLotVHPXC9QHLsywPvtHP513",
+      "isAdmin": false,
+      "email": "abbc@gmail.com",
+      "_id": "qWxVyLotVHPXC9QHLsywPvtHP513"
+    },
+    {
+      "classList": [],
+      "password": "Tim@12345",
+      "schoolId": "school_123",
+      "name": "AbdulHameed",
+      "id": "vueiB5ug6TehfQAlVUe9FES7CnZ2",
+      "isAdmin": false,
+      "email": "hameedt@gmail.com",
+      "_id": "vueiB5ug6TehfQAlVUe9FES7CnZ2"
+    }
+  ],
+  "students": [
+    {
+      "name": "rtyu",
+      "password": "wertyu",
+      "email": "wert@gmail.com",
+      "age": "32",
+      "class": "9C",
+      "school": "qwer",
+      "address": "dfghj",
+      "parentContact": "98765432",
+      "subjects": [
+        "history"
+      ],
+      "schoolId": "school_123",
+      "_id": "2u6bWgxtIwKd3HboAbta"
+    },
+    {
+      "name": "kuytr",
+      "password": "6543",
+      "email": "ytre@gmail.com",
+      "age": "33",
+      "class": "9C",
+      "school": "tre",
+      "address": "wertyu",
+      "parentContact": "98765432",
+      "subjects": [
+        "history"
+      ],
+      "_id": "5VU7fF77Qymjpsd9t7rM"
+    },
+    {
+      "historyId": [],
+      "address": "uyuuuii",
+      "marks": {},
+      "password": "std123",
+      "parentNumber": "78906567",
+      "schoolId": "school_123",
+      "id": "6mTrtGaSp4yJG2NuoS0K",
+      "schoolName": "abc school",
+      "class": "10A",
+      "age": 23,
+      "classList": [
+        "TEsjpie0gSLuFLx6l5xP",
+        "JYzvRAny8gqz5PsDi25c"
+      ],
+      "subjects": [
+        "science"
+      ],
+      "email": "std@gmail.com",
+      "profileImageUrl": "https://firebasestorage.googleapis.com/v0/b/chatbot-bbf51.firebasestorage.app/o/profile_images%2F6mTrtGaSp4yJG2NuoS0K_1735470584865.jpg?alt=media&token=fb394e2d-220b-4c2d-8b98-7ea1ccc5d6ed",
+      "name": "miya",
+      "_id": "6mTrtGaSp4yJG2NuoS0K"
+    },
+    {
+      "name": "binisiya",
+      "password": "bnsnzr",
+      "email": "bns@gmail.com",
+      "age": 23,
+      "schoolName": "abcd",
+      "className": 10,
+      "subject1": "english",
+      "subject2": "science",
+      "subject3": "maths",
+      "subject4": "history",
+      "subject5": "malayalam",
+      "subject6": "dewd",
+      "subject7": "weded",
+      "address": "edede",
+      "parentContactNo": 54758766,
+      "_id": "LSjx3pV7XFYiUCGlpdzX"
+    },
+    {
+      "historyId": [],
+      "address": "thorakkattip house",
+      "marks": {
+        "english": 90
+      },
+      "password": "bin123",
+      "parentNumber": "9867543456",
+      "schoolId": "school_123",
+      "name": "Binsiya",
+      "id": "R9U8oywgjet9lzj0w2OF",
+      "schoolName": "asmhss school",
+      "email": "binz@gmail.com",
+      "age": 24,
+      "subjects": [
+        "science",
+        "history"
+      ],
+      "class": "9C",
+      "profileImageUrl": "https://firebasestorage.googleapis.com/v0/b/chatbot-bbf51.firebasestorage.app/o/profile_images%2FR9U8oywgjet9lzj0w2OF_1737433674545.jpg?alt=media&token=cd21e02d-68b0-48f7-996c-fae07bb37101",
+      "_id": "R9U8oywgjet9lzj0w2OF"
+    },
+    {
+      "historyId": [],
+      "id": "eetIR6aBYsUeo9CwRNIa",
+      "name": "sildha",
+      "email": "sil@gmail.com",
+      "password": "sil123",
+      "age": 28,
+      "class": "10A",
+      "schoolName": "abcd",
+      "address": "fghbnkjmkldrtfgyhj",
+      "parentNumber": "786543235",
+      "schoolId": "school_123",
+      "profileImageUrl": "",
+      "subjects": [
+        "history",
+        "science"
+      ],
+      "_id": "eetIR6aBYsUeo9CwRNIa"
+    },
+    {
+      "historyId": [],
+      "address": "fijjucjtifjitf",
+      "subjects": [
+        "science",
+        "history"
+      ],
+      "marks": {
+        "science": 67
+      },
+      "password": "abc123",
+      "parentNumber": "7896543456",
+      "name": "abc",
+      "id": "mZ2MMYlKAsxnFa9rc2oA",
+      "schoolName": "abc school",
+      "class": "11B",
+      "email": "aaa@gmail.com",
+      "age": 23,
+      "schoolId": "school_123",
+      "_id": "mZ2MMYlKAsxnFa9rc2oA"
+    },
+    {
+      "name": "abin",
+      "password": "abi123",
+      "email": "abi@gmail.com",
+      "age": "21",
+      "class": "10A",
+      "school": "abcd",
+      "address": "qwertyuiop",
+      "parentContact": "9867543235",
+      "subjects": [
+        "history",
+        "science"
+      ],
+      "schoolId": "school_123",
+      "_id": "pjq6LFbq7UgQ6ghay2o1"
+    },
+    {
+      "name": "qwerty",
+      "password": "qwerty",
+      "email": "qwer@gmail.com",
+      "age": "32",
+      "class": "9C",
+      "school": "wetyu",
+      "address": "qwertyui",
+      "parentContact": "9876543210",
+      "subjects": [
+        "history"
+      ],
+      "schoolId": "school_123",
+      "_id": "qywTwZnNYdZenjcXzbIU"
+    },
+    {
+      "historyId": [],
+      "id": "wDP1q1sbq2qcmawgDogt",
+      "email": "abb@gmail.com",
+      "password": "abb123",
+      "age": 23,
+      "class": "10A",
+      "subjects": [
+        "history"
+      ],
+      "schoolName": "abc school",
+      "address": "dwferetgtrg",
+      "parentNumber": "8976567889",
+      "schoolId": "school_123",
+      "name": "abc",
+      "profileImageUrl": "https://firebasestorage.googleapis.com/v0/b/chatbot-bbf51.firebasestorage.app/o/profile_images%2FwDP1q1sbq2qcmawgDogt_1735542871323.jpg?alt=media&token=1c0b49e3-7959-4815-99ac-8306ae880e88",
+      "_id": "wDP1q1sbq2qcmawgDogt"
+    }
+  ],
+  "classes": [],
+  "topics": [],
+  "chats": [
+    {
+      "messages": [
+        {
+          "senderId": "fdbaW8WOzGWhiaHrxEzlyGmHPxg1",
+          "text": "Dear Teachers and Students,\n\nI hope you're all doing well. Please take note of the following important updates:\n\nClass Schedule Update: There will be a minor adjustment in the class timings starting from January 5, 2024. Kindly check the updated schedule on the portal.\n\nHoliday Announcement: There will be a holiday on January 10, 2024 for all students and staff in observance of [Holiday Name].\n\nImportant Deadlines: Please ensure all assignments and projects are submitted by January 8, 2024, as no extensions will be granted.\n\nTeacher's Meeting: There will be a mandatory teachers' meeting on January 7, 2024, at 2:00 PM in the staff room.\n\nShould you have any questions or require further clarification, please do not hesitate to reach out to the admin office.\n\nThank you for your cooperation.\n\nBest regards,\nAdmin Team",
+          "currentDateTime": {
+            "_seconds": 1735541693,
+            "_nanoseconds": 798000000
+          }
+        }
+      ],
+      "_id": "Admin broadcast"
+    },
+    {
+      "createdAt": {
+        "_seconds": 1733724543,
+        "_nanoseconds": 690000000
+      },
+      "className": "9E",
+      "subject": "politics",
+      "messages": [
+        {
+          "documents": [],
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "text": "Dear Students,\n\nI hope you are doing well. Please be reminded that we will have an upcoming class test on Thursday, January 4, 2025, covering chapters 5 to 8 from your textbook. Kindly ensure you revise the topics thoroughly in preparation.\n\nIf you have any questions or need clarification on any topic, feel free to ask before the test.\n\nBest regards,\nMrs. Binsiya\nClass Teacher",
+          "messageType": "text",
+          "isDeleted": false,
+          "isRead": false,
+          "currentDateTime": {
+            "_seconds": 1735544146,
+            "_nanoseconds": 817000000
+          },
+          "className": "9C",
+          "subject": "history"
+        },
+        {
+          "documents": [],
+          "subject": "History",
+          "messageType": "text",
+          "isRead": false,
+          "senderId": "NJjJ3uJGc2NFR1dSm6N7EHudhho2",
+          "isDeleted": false,
+          "currentDateTime": {
+            "_seconds": 1734504884,
+            "_nanoseconds": 132000000
+          },
+          "className": "10B",
+          "text": "binsiya"
+        },
+        {
+          "documents": [],
+          "messageType": "text",
+          "text": "haiii",
+          "className": "10B",
+          "senderId": "NJjJ3uJGc2NFR1dSm6N7EHudhho2",
+          "subject": "History",
+          "isDeleted": false,
+          "isRead": false,
+          "currentDateTime": {
+            "_seconds": 1734504875,
+            "_nanoseconds": 790000000
+          }
+        },
+        {
+          "documents": [],
+          "className": "10A",
+          "subject": "science",
+          "text": "dwww",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "currentDateTime": {
+            "_seconds": 1733732147,
+            "_nanoseconds": 659000000
+          },
+          "isRead": false,
+          "isDeleted": false,
+          "messageType": "text"
+        },
+        {
+          "documents": [],
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "isDeleted": false,
+          "messageType": "text",
+          "text": "gergrg",
+          "subject": "politics",
+          "className": "9E",
+          "isRead": false,
+          "currentDateTime": {
+            "_seconds": 1733731912,
+            "_nanoseconds": 845000000
+          }
+        },
+        {
+          "documents": [],
+          "currentDateTime": {
+            "_seconds": 1733731886,
+            "_nanoseconds": 872000000
+          },
+          "subject": "politics",
+          "isDeleted": false,
+          "isRead": false,
+          "messageType": "text",
+          "className": "9E",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "text": "9ECXDFFFF"
+        },
+        {
+          "documents": [],
+          "isRead": false,
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "className": "9E",
+          "text": "ctggey",
+          "currentDateTime": {
+            "_seconds": 1733731863,
+            "_nanoseconds": 983000000
+          },
+          "isDeleted": false,
+          "messageType": "text",
+          "subject": "politics"
+        },
+        {
+          "documents": [],
+          "messageType": "text",
+          "subject": "maths",
+          "className": "10C",
+          "isDeleted": false,
+          "text": "effffffff",
+          "isRead": false,
+          "currentDateTime": {
+            "_seconds": 1733731699,
+            "_nanoseconds": 140000000
+          },
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2"
+        },
+        {
+          "documents": [],
+          "text": "vsse",
+          "currentDateTime": {
+            "_seconds": 1733731656,
+            "_nanoseconds": 804000000
+          },
+          "isRead": false,
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "isDeleted": false,
+          "subject": "science",
+          "messageType": "text",
+          "className": "10A"
+        },
+        {
+          "documents": [],
+          "className": "10A",
+          "subject": "science",
+          "isDeleted": false,
+          "currentDateTime": {
+            "_seconds": 1733731648,
+            "_nanoseconds": 125000000
+          },
+          "messageType": "text",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "isRead": false,
+          "text": "fvc"
+        },
+        {
+          "documents": [],
+          "subject": "history",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "isRead": false,
+          "currentDateTime": {
+            "_seconds": 1733731611,
+            "_nanoseconds": 90000000
+          },
+          "isDeleted": false,
+          "text": "kewjnfkjewnfekw",
+          "messageType": "text"
+        },
+        {
+          "documents": [],
+          "isDeleted": false,
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "subject": "science",
+          "className": "12A",
+          "currentDateTime": {
+            "_seconds": 1733731465,
+            "_nanoseconds": 391000000
+          },
+          "text": "12 a sciecdwedfghjkl;",
+          "messageType": "text",
+          "isRead": false
+        },
+        {
+          "documents": [],
+          "messageType": "text",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "currentDateTime": {
+            "_seconds": 1733731377,
+            "_nanoseconds": 237000000
+          },
+          "className": "10A",
+          "isDeleted": false,
+          "subject": "science",
+          "isRead": false,
+          "text": "efwwe"
+        },
+        {
+          "documents": [],
+          "className": "11D",
+          "isRead": false,
+          "messageType": "text",
+          "text": "fwfefe",
+          "isDeleted": false,
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "subject": "english",
+          "currentDateTime": {
+            "_seconds": 1733731354,
+            "_nanoseconds": 538000000
+          }
+        },
+        {
+          "documents": [],
+          "isRead": false,
+          "className": "11D",
+          "subject": "english",
+          "text": "ggg",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "currentDateTime": {
+            "_seconds": 1733731351,
+            "_nanoseconds": 191000000
+          },
+          "messageType": "text",
+          "isDeleted": false
+        },
+        {
+          "documents": [],
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "currentDateTime": {
+            "_seconds": 1733731344,
+            "_nanoseconds": 706000000
+          },
+          "isRead": false,
+          "isDeleted": false,
+          "messageType": "text",
+          "className": "11D",
+          "text": "11 d english",
+          "subject": "english"
+        },
+        {
+          "documents": [],
+          "subject": "science",
+          "messageType": "text",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "className": "10A",
+          "isDeleted": false,
+          "currentDateTime": {
+            "_seconds": 1733731331,
+            "_nanoseconds": 297000000
+          },
+          "text": "10 a",
+          "isRead": false
+        },
+        {
+          "documents": [],
+          "text": "haiii",
+          "className": "9E",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "messageType": "text",
+          "currentDateTime": {
+            "_seconds": 1733730837,
+            "_nanoseconds": 463000000
+          },
+          "isDeleted": false,
+          "subject": "politics",
+          "isRead": false
+        },
+        {
+          "documents": [],
+          "isDeleted": false,
+          "text": "koooooooooooooooiiiiiiiiiiiiiiiiiiiii",
+          "className": "10C",
+          "isRead": false,
+          "currentDateTime": {
+            "_seconds": 1733726511,
+            "_nanoseconds": 240000000
+          },
+          "messageType": "text",
+          "subject": "maths",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2"
+        },
+        {
+          "documents": [],
+          "messageType": "text",
+          "isRead": false,
+          "subject": "science",
+          "className": "10A",
+          "currentDateTime": {
+            "_seconds": 1733726440,
+            "_nanoseconds": 988000000
+          },
+          "isDeleted": false,
+          "text": "hpppppppp",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2"
+        },
+        {
+          "documents": [],
+          "className": "9C",
+          "currentDateTime": {
+            "_seconds": 1733726398,
+            "_nanoseconds": 520000000
+          },
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "messageType": "text",
+          "text": "heeeeeeeeeeeeeeeeeeeee",
+          "isRead": false,
+          "isDeleted": false,
+          "subject": "science"
+        },
+        {
+          "documents": [],
+          "className": "9E",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "subject": "politics",
+          "messageType": "text",
+          "currentDateTime": {
+            "_seconds": 1733726393,
+            "_nanoseconds": 494000000
+          },
+          "isRead": false,
+          "text": "haiii",
+          "isDeleted": false
+        },
+        {
+          "documents": [],
+          "currentDateTime": {
+            "_seconds": 1733725962,
+            "_nanoseconds": 351000000
+          },
+          "className": "10A",
+          "isRead": false,
+          "subject": "science",
+          "messageType": "text",
+          "text": "uhuhuhjh",
+          "isDeleted": false,
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2"
+        },
+        {
+          "documents": [],
+          "messageType": "text",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "text": "helooooo",
+          "isRead": false,
+          "isDeleted": false,
+          "currentDateTime": {
+            "_seconds": 1733725921,
+            "_nanoseconds": 333000000
+          },
+          "className": "10A",
+          "subject": "science"
+        },
+        {
+          "documents": [],
+          "isRead": false,
+          "class": "9E",
+          "subject": "politics",
+          "isDeleted": false,
+          "messageType": "text",
+          "text": "dgfgfdgfd",
+          "currentDateTime": {
+            "_seconds": 1733724548,
+            "_nanoseconds": 340000000
+          },
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2"
+        },
+        {
+          "documents": [],
+          "text": "dggsgs",
+          "class": "9E",
+          "isRead": false,
+          "isDeleted": false,
+          "subject": "politics",
+          "senderId": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+          "messageType": "text",
+          "currentDateTime": {
+            "_seconds": 1733724543,
+            "_nanoseconds": 657000000
+          }
+        }
+      ],
+      "updatedAt": {
+        "_seconds": 1735544147,
+        "_nanoseconds": 86000000
+      },
+      "_id": "chatSession"
+    }
+  ],
+  "history": [
+    {
+      "date": "2024-12-04T10:45:48.371092",
+      "subject": "history",
+      "userUid": "k0Dj7vIUEBStR7vHkli7CxtYU3o1",
+      "history_id": "0U2adYZcQJOtfYv6UzkY",
+      "topic": "",
+      "className": "10A",
+      "_id": "0U2adYZcQJOtfYv6UzkY"
+    },
+    {
+      "date": "2024-11-21T10:34:35.487943",
+      "subject": "Science",
+      "topic": "",
+      "className": "11B",
+      "history_id": "1U3xiQg2x5o8HliBIWos",
+      "userUid": "1s8KyEqGzxNWRnqeHuyqRBxYjWw1",
+      "topics": [
+        "solar system",
+        "photosynthesys",
+        "cells",
+        "metals"
+      ],
+      "_id": "1U3xiQg2x5o8HliBIWos"
+    },
+    {
+      "date": {
+        "_seconds": 1733216087,
+        "_nanoseconds": 906000000
+      },
+      "subject": "politics",
+      "className": "11B",
+      "history_id": "9Nqlrs6iY63Qa4RbLIRG",
+      "_id": "9Nqlrs6iY63Qa4RbLIRG"
+    },
+    {
+      "date": "2024-12-07T13:18:01.660252",
+      "subject": "politics",
+      "topic": "",
+      "className": "9E",
+      "history_id": "A1ELMiyU9p31jni0Ib9g",
+      "userUid": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+      "topics": [
+        "quit india movement"
+      ],
+      "_id": "A1ELMiyU9p31jni0Ib9g"
+    },
+    {
+      "date": "2024-11-23T08:33:49.591706",
+      "topic": "",
+      "history_id": "AEQPgtwwg7Pu7vs9Rrc4",
+      "userUid": "A7mxdF8m3DabYR1GTVVF6CnfbR92",
+      "className": "11B",
+      "subject": "science",
+      "_id": "AEQPgtwwg7Pu7vs9Rrc4"
+    },
+    {
+      "date": "2024-11-21T18:16:22.625890",
+      "topic": "",
+      "history_id": "BHEnPYUAhpyWAyW8CO0C",
+      "userUid": "1x4HGDMREcZglMXIRDtEaQw7XNv2",
+      "topics": [
+        "Solar system"
+      ],
+      "className": "11B",
+      "subject": "history",
+      "_id": "BHEnPYUAhpyWAyW8CO0C"
+    },
+    {
+      "history_id": "DoGFqoytmQ1ohkkjhk4d",
+      "date": "2025-01-08T10:53:01.511",
+      "topic": "",
+      "className": "10B",
+      "subject": "history",
+      "userUid": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+      "_id": "DoGFqoytmQ1ohkkjhk4d"
+    },
+    {
+      "date": "2024-12-03T12:33:59.683069",
+      "subject": "english",
+      "topic": "",
+      "className": "11B",
+      "history_id": "DpLJQEjiAWl3LuzzRqXC",
+      "userUid": "1s8KyEqGzxNWRnqeHuyqRBxYjWw1",
+      "_id": "DpLJQEjiAWl3LuzzRqXC"
+    },
+    {
+      "history_id": "ED8dcqnrrumu8yx7elGc",
+      "date": "2025-01-16T14:31:52.241",
+      "topic": "",
+      "className": "11B",
+      "subject": "geography",
+      "userUid": "1x4HGDMREcZglMXIRDtEaQw7XNv2",
+      "_id": "ED8dcqnrrumu8yx7elGc"
+    },
+    {
+      "date": "2024-12-07T13:18:12.862658",
+      "subject": "science",
+      "topic": "",
+      "className": "12A",
+      "history_id": "GboE8RCxuIw9oC6qXAvJ",
+      "userUid": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+      "topics": [
+        "Photosynthesis",
+        "solar system",
+        "metals and non metals",
+        "photosynthesys",
+        "chemical reactions",
+        "photosynthesis",
+        "science"
+      ],
+      "_id": "GboE8RCxuIw9oC6qXAvJ"
+    },
+    {
+      "date": "2024-11-21T10:08:12.939686",
+      "subject": "History",
+      "topic": "",
+      "className": "9B",
+      "history_id": "IIHJ9eUbsE2YaWLuuMvl",
+      "userUid": "3UHKf4OdAlSrbikjoBCGn8jV9R92",
+      "_id": "IIHJ9eUbsE2YaWLuuMvl"
+    },
+    {
+      "date": "2024-11-28T17:08:54.213342",
+      "subject": "maths",
+      "topic": "",
+      "className": "10A",
+      "history_id": "JYzvRAny8gqz5PsDi25c",
+      "userUid": "1s8KyEqGzxNWRnqeHuyqRBxYjWw1",
+      "_id": "JYzvRAny8gqz5PsDi25c"
+    },
+    {
+      "date": "2024-12-07T13:17:28.120823",
+      "subject": "maths",
+      "topic": "",
+      "className": "10C",
+      "history_id": "M3ouUWyet7Px0tpoRJcb",
+      "userUid": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+      "topics": [
+        "algebra",
+        "trignometry",
+        "equations"
+      ],
+      "_id": "M3ouUWyet7Px0tpoRJcb"
+    },
+    {
+      "date": "2024-11-22T11:30:44.123988",
+      "subject": "Science",
+      "topic": "",
+      "className": "11A",
+      "history_id": "SSuMvohFMFQBD4qEkHDt",
+      "userUid": "NJjJ3uJGc2NFR1dSm6N7EHudhho2",
+      "_id": "SSuMvohFMFQBD4qEkHDt"
+    },
+    {
+      "date": "2024-11-21T18:16:45.971583",
+      "subject": "History",
+      "topic": "",
+      "className": "10B",
+      "history_id": "Sineti8xo5PtjK8GelaC",
+      "userUid": "1x4HGDMREcZglMXIRDtEaQw7XNv2",
+      "topics": [
+        "world war"
+      ],
+      "_id": "Sineti8xo5PtjK8GelaC"
+    },
+    {
+      "date": "2024-11-28T17:08:35.829657",
+      "subject": "Science",
+      "topic": "",
+      "className": "10A",
+      "history_id": "TEsjpie0gSLuFLx6l5xP",
+      "userUid": "1s8KyEqGzxNWRnqeHuyqRBxYjWw1",
+      "topics": [
+        "solar system"
+      ],
+      "_id": "TEsjpie0gSLuFLx6l5xP"
+    },
+    {
+      "date": "2024-11-21T18:17:41.205854",
+      "subject": "Science",
+      "topic": "",
+      "className": "11C",
+      "history_id": "VvNJyYhSOkevnJnLfoWK",
+      "userUid": "1x4HGDMREcZglMXIRDtEaQw7XNv2",
+      "topics": [
+        "cells"
+      ],
+      "_id": "VvNJyYhSOkevnJnLfoWK"
+    },
+    {
+      "date": "2024-12-07T13:17:43.634961",
+      "subject": "english",
+      "topic": "",
+      "className": "11D",
+      "history_id": "d50zdKK4I68lWXcVh99S",
+      "userUid": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+      "topics": [
+        "grammar"
+      ],
+      "_id": "d50zdKK4I68lWXcVh99S"
+    },
+    {
+      "date": "2024-11-21T11:24:50.624123",
+      "topic": "",
+      "history_id": "edz6F5pawZGiSTMVCuMD",
+      "userUid": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+      "className": "10A",
+      "subject": "science",
+      "topics": [
+        "solar system",
+        "metalsand non metals"
+      ],
+      "_id": "edz6F5pawZGiSTMVCuMD"
+    },
+    {
+      "date": "2024-11-23T08:34:04.304444",
+      "subject": "Mathematics",
+      "topic": "",
+      "className": "10B",
+      "history_id": "jAHwwaQTNwBNyuJKRlcL",
+      "userUid": "A7mxdF8m3DabYR1GTVVF6CnfbR92",
+      "topics": [
+        "Integration"
+      ],
+      "_id": "jAHwwaQTNwBNyuJKRlcL"
+    },
+    {
+      "date": "2024-11-22T11:31:21.131584",
+      "subject": "History",
+      "topic": "",
+      "className": "10B",
+      "history_id": "mImQXmBQ0qChnBvrIGtw",
+      "userUid": "NJjJ3uJGc2NFR1dSm6N7EHudhho2",
+      "_id": "mImQXmBQ0qChnBvrIGtw"
+    },
+    {
+      "date": "2024-12-04T10:29:34.380413",
+      "subject": "history",
+      "userUid": "fdbaW8WOzGWhiaHrxEzlyGmHPxg1",
+      "history_id": "mWXzz9UJ2opioQRu9gxk",
+      "topic": "",
+      "className": "9A",
+      "_id": "mWXzz9UJ2opioQRu9gxk"
+    },
+    {
+      "date": "2024-12-04T10:35:57.402441",
+      "userUid": "FmxxuILRL6WdKPZSzeZWQXKTV0t2",
+      "history_id": "oUsrP2p5D3AcWZOXohQ6",
+      "topic": "",
+      "topics": [
+        "world war",
+        "jalianwalabagh",
+        "The cold war"
+      ],
+      "subject": "history",
+      "className": "9C",
+      "updatedAt": {
+        "_seconds": 1734420670,
+        "_nanoseconds": 327000000
+      },
+      "_id": "oUsrP2p5D3AcWZOXohQ6"
+    },
+    {
+      "date": "2024-11-23T08:34:33.683131",
+      "topic": "",
+      "history_id": "whJnlya2rbHuvPbTkqvW",
+      "userUid": "A7mxdF8m3DabYR1GTVVF6CnfbR92",
+      "className": "10A",
+      "subject": "maths",
+      "_id": "whJnlya2rbHuvPbTkqvW"
+    },
+    {
+      "date": {
+        "_seconds": 1733225735,
+        "_nanoseconds": 622000000
+      },
+      "subject": "malayalam",
+      "className": "10A",
+      "history_id": "yBGwTxViZn43prjFc4Hb",
+      "_id": "yBGwTxViZn43prjFc4Hb"
+    }
+  ]
+}
