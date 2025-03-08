@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class ChatModel {
   final String senderId;
@@ -23,33 +23,42 @@ class ChatModel {
     required this.subject,
   });
 
-  // fromFirestore constructor to convert Firestore data into a ChatModel instance
-  factory ChatModel.fromFirestore(Map<String, dynamic> data) {
+  // fromJson constructor to convert MongoDB API data into a ChatModel instance
+  factory ChatModel.fromJson(Map<String, dynamic> data) {
     return ChatModel(
       senderId: data['senderId'] ?? '',
-      text: data['text'] ?? '',
-      messageType: data['messageType'] ?? '',
+      text: data['content'] ?? data['text'] ?? '',
+      messageType: data['messageType'] ?? 'text',
       isDeleted: data['isDeleted'] ?? false,
-      isRead: data['isRead'] ?? false,
-      currentDateTime: (data['currentDateTime'] as Timestamp).toDate(),
+      isRead: data['isRead'] ?? true,
+      currentDateTime: data['timestamp'] != null 
+          ? DateTime.parse(data['timestamp']) 
+          : (data['currentDateTime'] != null 
+              ? DateTime.parse(data['currentDateTime']) 
+              : DateTime.now()),
       documents: List.from(data['documents'] ?? []),
       className: data['className'] ?? '',
       subject: data['subject'] ?? '',
     );
   }
 
-  // toFirestore method to convert ChatModel instance back to Firestore data
-  Map<String, dynamic> toFirestore() {
+  // toJson method to convert ChatModel instance to JSON for MongoDB API
+  Map<String, dynamic> toJson() {
     return {
       'senderId': senderId,
-      'text': text,
+      'content': text,
       'messageType': messageType,
       'isDeleted': isDeleted,
       'isRead': isRead,
-      'currentDateTime': Timestamp.fromDate(currentDateTime),
+      'timestamp': currentDateTime.toIso8601String(),
       'documents': documents,
       'className': className,
       'subject': subject,
     };
+  }
+  
+  // For backward compatibility
+  Map<String, dynamic> toFirestore() {
+    return toJson();
   }
 }

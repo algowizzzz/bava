@@ -1,9 +1,7 @@
 import 'package:chatbot/main.dart';
-import 'package:chatbot/model/teacherModel.dart';
 import 'package:chatbot/screens/home_page/dashboard.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:chatbot/services/api_service.dart';
 import 'login_screen.dart';
 
 class Signup extends StatefulWidget {
@@ -25,8 +23,10 @@ class _SignupState extends State<Signup> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController schoolController = TextEditingController();
+  TextEditingController subjectController = TextEditingController();
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final ApiService _apiService = ApiService();
   bool isLoading = false;
   bool isLoadingg = false;
   bool obscurePassword = true;
@@ -40,21 +40,15 @@ class _SignupState extends State<Signup> {
       });
 
       try {
-        UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        // Register using MongoDB API
+        await _apiService.register(
+          name: nameController.text.trim(),
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
-        );
-
-        await FirebaseFirestore.instance.collection("Teacher").doc(userCredential.user!.uid).set(
-          TeacherModel(
-            id: userCredential.user!.uid,
-            name: nameController.text.trim(),
-            email: emailController.text.trim(),
-            password: passwordController.text.trim(),
-            isAdmin: true,
-            schoolId: 'school_123',
-            classList: [],
-          ).toFirestore(),
+          isTeacher: true,  // This is a teacher signup
+          school: schoolController.text.trim(),
+          subject: subjectController.text.trim(),
+          schoolId: 'school_123',  // Default school ID
         );
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -64,9 +58,11 @@ class _SignupState extends State<Signup> {
           context,
           MaterialPageRoute(builder: (context) => LoginScreen()),
         );
-      } on FirebaseAuthException catch (e) {
+      } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.message ?? "Signup failed")),
+          SnackBar(content: Text(e.toString().contains('Exception:') 
+              ? e.toString().split('Exception: ')[1]
+              : "Signup failed")),
         );
       } finally {
         setState(() {
@@ -166,6 +162,40 @@ class _SignupState extends State<Signup> {
                             });
                           },
                         ),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    
+                    // School Input
+                    TextFormField(
+                      controller: schoolController,
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        labelText: "School",
+                        labelStyle: TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: Colors.deepPurple[400],
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    
+                    // Subject Input
+                    TextFormField(
+                      controller: subjectController,
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        labelText: "Subject",
+                        labelStyle: TextStyle(color: Colors.white),
+                        filled: true,
+                        fillColor: Colors.deepPurple[400],
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                       ),
                     ),
                     SizedBox(height: 16),

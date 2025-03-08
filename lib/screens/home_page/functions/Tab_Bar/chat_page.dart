@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:chat_bubbles/chat_bubbles.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../model/chatModel.dart';
+import '../../../../services/api_service.dart';
 
 class ChatPage extends StatefulWidget {
   final String className;
@@ -16,72 +16,145 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final String _currentUserId = FirebaseAuth.instance.currentUser?.uid ?? 'guest';
+  final ApiService _apiService = ApiService();
+  String _currentUserId = 'guest';
+  String _currentUserName = '';
+  bool _isTeacher = true;
   List<ChatModel> _chatList = [];
+  String _chatId = '';
 
-  // Function to send a message to Firebase Firestore
+  // Function to send a message using MongoDB API
   void _sendMessage(String text) async {
     if (text.trim().isEmpty) return;
 
-    final newMessage = ChatModel(
-      senderId: _currentUserId,
-      text: text,
-      messageType: 'text',
-      isDeleted: false,
-      isRead: false,
-      currentDateTime: DateTime.now(),
-      documents: [],
-      className: widget.className,
-      subject: widget.subjects,
-    );
-
-    final chatDocRef = _firestore.collection('chats').doc('chatSession');
-
-    // Use a transaction to avoid overwriting the messages
-    await _firestore.runTransaction((transaction) async {
-      final docSnapshot = await transaction.get(chatDocRef);
-      if (docSnapshot.exists) {
-        List<Map<String, dynamic>> messages = List<Map<String, dynamic>>.from(docSnapshot['messages'] ?? []);
-        // Ensure we only insert the new message
-        messages.insert(0, newMessage.toFirestore());
-        transaction.update(chatDocRef, {'messages': messages, 'updatedAt': Timestamp.now()});
-      } else {
-        await chatDocRef.set({
-          'messages': [newMessage.toFirestore()],
-          'createdAt': Timestamp.now(),
-          'updatedAt': Timestamp.now(),
-          'className': widget.className,
-          'subject': widget.subjects,
-        });
-      }
-    });
-
-    setState(() {
-      _chatList.insert(0, newMessage);
-    });
-  }
-  void _streamMessages() {
-    final chatDocRef = _firestore.collection('chats').doc('chatSession');
-    chatDocRef.snapshots().listen((docSnapshot) {
-      if (docSnapshot.exists) {
-        List<Map<String, dynamic>> messages = List<Map<String, dynamic>>.from(docSnapshot['messages'] ?? []);
-
-        final filteredMessages = messages.where((data) {
-          return data['className'] == widget.className && data['subject'] == widget.subjects;
-        }).toList();
-
+    try {
+      // If we don't have a chat ID yet, create a new chat
+      if (_chatId.isEmpty) {
+        // Get student ID from the first student in the class
+        final students = await _apiService.getStudents();
+        if (students.isEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('No students found to create chat with')),
+          );
+          return;
+        }
+        
+        final studentId = students[0]['_id'];
+        final chatTitle = '${widget.subjects} - ${widget.className}';
+        
+        final response = await _apiService.createChat(
+          studentId,
+          chatTitle,
+          initialMessage: text,
+        );
+        
+        _chatId = response['_id'];
+        
+        // Add the message to our local chat list
+        final newMessage = ChatModel(
+          senderId: _currentUserId,
+          text: text,
+          messageType: 'text',
+          isDeleted: false,
+          isRead: false,
+          currentDateTime: DateTime.now(),
+          documents: [],
+          className: widget.className,
+          subject: widget.subjects,
+        );
+        
         setState(() {
-          _chatList = filteredMessages.map((data) => ChatModel.fromFirestore(data)).toList();
+          _chatList.insert(0, newMessage);
+        });
+      } else {
+        // Send message to existing chat
+        final response = await _apiService.sendMessage(_chatId, text);
+        
+        // Add the message to our local chat list
+        final newMessage = ChatModel(
+          senderId: _currentUserId,
+          text: text,
+          messageType: 'text',
+          isDeleted: false,
+          isRead: false,
+          currentDateTime: DateTime.now(),
+          documents: [],
+          className: widget.className,
+          subject: widget.subjects,
+        );
+        
+        setState(() {
+          _chatList.insert(0, newMessage);
         });
       }
-    });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to send message: $e')),
+      );
+    }
+  }
+  // Load messages from MongoDB API
+  Future<void> _loadMessages() async {
+    try {
+      // Find existing chat for this class and subject
+      final chats = _isTeacher 
+          ? await _apiService.getChatsByTeacher()
+          : await _apiService.getChatsByStudent(_currentUserId);
+      
+      // Filter chats by title (which contains class and subject)
+      final filteredChats = chats.where((chat) {
+        final title = chat['title'] ?? '';
+        return title.contains(widget.className) && title.contains(widget.subjects);
+      }).toList();
+      
+      if (filteredChats.isNotEmpty) {
+        // Use the first matching chat
+        final chat = filteredChats[0];
+        _chatId = chat['_id'];
+        
+        // Get chat messages
+        final chatData = await _apiService.getChatById(_chatId);
+        final messages = chatData['messages'] ?? [];
+        
+        setState(() {
+          _chatList = messages.map((data) => ChatModel(
+            senderId: data['senderId'] ?? '',
+            text: data['content'] ?? '',
+            messageType: 'text',
+            isDeleted: false,
+            isRead: true,
+            currentDateTime: DateTime.parse(data['timestamp'] ?? DateTime.now().toIso8601String()),
+            documents: [],
+            className: widget.className,
+            subject: widget.subjects,
+          )).toList();
+        });
+      }
+    } catch (e) {
+      print('Error loading messages: $e');
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    _streamMessages();
+    _loadUserData();
+  }
+  
+  Future<void> _loadUserData() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      setState(() {
+        _currentUserId = prefs.getString('uid') ?? 'guest';
+        _currentUserName = prefs.getString('name') ?? 'User';
+        _isTeacher = prefs.getString('type') == 'teacher' || prefs.getString('type') == 'admin';
+      });
+      
+      // After loading user data, load messages
+      await _loadMessages();
+    } catch (e) {
+      print('Error loading user data: $e');
+    }
   }
 
   @override

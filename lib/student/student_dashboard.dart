@@ -1,10 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chatbot/screens/auth/login_screen.dart';
+import 'package:chatbot/services/api_service.dart';
 import 'package:chatbot/student/app_drawer_student.dart';
 import 'package:chatbot/student/app_drawer_student_desktop.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:chatbot/student/profile_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
@@ -27,7 +27,8 @@ class studentDashboard extends StatefulWidget {
 }
 
 class _studentDashboardState extends State<studentDashboard> {
-  String currentUserUid = FirebaseAuth.instance.currentUser!.uid;
+  final ApiService _apiService = ApiService();
+  String currentUserId = '';
   late String classname;
   late String name;
   late int age;
@@ -41,8 +42,7 @@ class _studentDashboardState extends State<studentDashboard> {
     name = '';
     age = 0;
     email = '';
-    _getCurrentUserId();
-    _loadStudentData();
+    _loadUserData();
   }
 
   void _showLogoutDialog(BuildContext context) async {
@@ -84,14 +84,24 @@ class _studentDashboardState extends State<studentDashboard> {
     );
   }
 
-  Future<void> _getCurrentUserId() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
+  Future<void> _loadUserData() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       setState(() {
-        currentUserUid = user.uid;
+        currentUserId = prefs.getString('uid') ?? '';
       });
-    } else {
-      print('User is not authenticated');
+      
+      if (currentUserId.isNotEmpty) {
+        _loadStudentData();
+      } else {
+        print('User is not authenticated');
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => LoginScreen()),
+        );
+      }
+    } catch (e) {
+      print('Error loading user data: $e');
     }
   }
 
@@ -102,19 +112,34 @@ class _studentDashboardState extends State<studentDashboard> {
     setState(() {
       isLoading = true;
     });
-    final snapshot = await FirebaseFirestore.instance
-        .collection('students')
-        .where('id', isEqualTo: widget.studentId)
-        .get();
-
-    if (snapshot.docs.isNotEmpty) {
+    
+    try {
+      // Get student profile from API
+      final studentProfile = await _apiService.getStudentProfile(widget.studentId);
+      
+      if (studentProfile != null) {
+        setState(() {
+          name = studentProfile['name'] ?? '';
+          email = studentProfile['email'] ?? '';
+          age = studentProfile['age'] ?? 0;
+          classname = studentProfile['class'] ?? '';
+          
+          // Process student data for display
+          _studentData = [
+            {'name': name, 'value': 'Name'},
+            {'class': classname, 'value': 'Class'},
+            {'age': age.toString(), 'value': 'Age'},
+            {'email': email, 'value': 'Email'},
+          ];
+        });
+      }
+    } catch (e) {
+      print('Error loading student data: $e');
+    } finally {
       setState(() {
-        _studentData = _processStudentData(snapshot.docs);
+        isLoading = false;
       });
     }
-    setState(() {
-      isLoading = false;
-    });
   }
 
   Widget build(BuildContext context) {
@@ -424,11 +449,10 @@ class _studentDashboardState extends State<studentDashboard> {
     );
   }
 
-  List<Map<String, String>> _processStudentData(
-      List<QueryDocumentSnapshot> students) {
+  List<Map<String, String>> _processStudentData(List<dynamic> students) {
     List<Map<String, String>> pairs = [];
     for (var student in students) {
-      var data = student.data() as Map<String, dynamic>;
+      var data = student as Map<String, dynamic>;
       String className = data['class'] ?? 'N/A';
       List<dynamic> subjects = data['subjects'] ?? [];
       for (var subject in subjects) {

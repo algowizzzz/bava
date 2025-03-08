@@ -1,11 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chatbot/main.dart';
 import 'package:chatbot/screens/home_page/app_drawer_desktop.dart';
+import 'package:chatbot/services/api_service.dart';
 import 'package:chatbot/student/functions/notification.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../model/historyModel.dart';
 import 'appDrawer.dart';
 import 'functions/Tab_Bar/teacher_tabBar.dart';
@@ -25,6 +25,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   bool isLoading = false;
+  final ApiService _apiService = ApiService();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
   final TextEditingController classController = TextEditingController();
@@ -32,12 +33,34 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final TextEditingController addressController = TextEditingController();
   final TextEditingController parentNumberController = TextEditingController();
   final TextEditingController marksController = TextEditingController();
-  final CollectionReference _classesCollection =
-      FirebaseFirestore.instance.collection('history');
-  String currentUserUid = FirebaseAuth.instance.currentUser!.uid;
+  String currentUserId = '';
+  String userName = '';
+  
   @override
   void initState() {
     super.initState();
+    _loadUserData();
+  }
+  
+  Future<void> _loadUserData() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      setState(() {
+        currentUserId = prefs.getString('uid') ?? '';
+        userName = prefs.getString('name') ?? '';
+      });
+      
+      // Load user profile from API
+      if (currentUserId.isNotEmpty) {
+        final userProfile = await _apiService.getUserProfile();
+        setState(() {
+          nameController.text = userProfile['name'] ?? '';
+          schoolController.text = userProfile['school'] ?? '';
+        });
+      }
+    } catch (e) {
+      print('Error loading user data: $e');
+    }
   }
 
   test() {
@@ -242,11 +265,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ],
                       )),
                       const SizedBox(height: 10),
-                      StreamBuilder<QuerySnapshot>(
-                          stream: FirebaseFirestore.instance
-                              .collection('history')
-                              .where('userUid', isEqualTo: currentUserUid)
-                              .snapshots(),
+                      FutureBuilder<List<dynamic>>(
+                          future: _apiService.getUserHistory(),
                           builder: (context, snapshot) {
                             if (snapshot.hasError) {
                               debugPrint(
@@ -260,13 +280,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   child: CircularProgressIndicator());
                             }
 
-                            final historyDocs = snapshot.data?.docs ?? [];
+                            final historyList = snapshot.data ?? [];
                             final Set<String> uniqueClasses = {};
                             final List<HistoryModel> uniqueHistory = [];
 
-                            for (var doc in historyDocs) {
-                              final historyData =
-                                  doc.data() as Map<String, dynamic>? ?? {};
+                            for (var historyItem in historyList) {
+                              final historyData = historyItem as Map<String, dynamic>;
 
                               final className =
                                   historyData['className'] ?? 'No Class Name';
@@ -282,7 +301,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   topic: historyData['topic'] ?? 'No Topic',
                                   className: className,
                                   subject: subject,
-                                  userUid: currentUserUid,
+                                  userUid: currentUserId,
                                 ));
                               }
                             }

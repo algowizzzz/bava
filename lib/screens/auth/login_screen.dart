@@ -1,6 +1,4 @@
 import 'package:chatbot/screens/auth/signup.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../admin/Admin_dashboard.dart';
@@ -9,6 +7,7 @@ import '../../admin/tab_admin.dart';
 import '../../student/student_dashboard.dart';
 import '../home_page/dashboard.dart';
 import '../forgot_password/forgotpassword1.dart';
+import '../../services/api_service.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -16,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final ApiService _apiService = ApiService();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isLoading = false;
@@ -41,84 +40,59 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     try {
-      // Firebase Authentication for login
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+      // Login using our MongoDB API
+      final response = await _apiService.login(
+        email,
+        password,
+        isAdminSelected, // isTeacher parameter (true for admin/teacher, false for student)
       );
 
-      if (userCredential.user != null) {
-        String uid = userCredential.user!.uid;
-
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('uid', uid);
-        await prefs.setString('email', email);
-
-        if (isAdminSelected) {
-          // Check Admin/Teacher Collection
-          DocumentSnapshot<Map<String, dynamic>> teacherDoc =
-          await FirebaseFirestore.instance.collection('Teacher').doc(uid).get();
-
-          if (teacherDoc.exists) {
-            bool isAdmin = teacherDoc['isAdmin'] ?? false;
-            String name = teacherDoc['name'] ?? 'Teacher';
-
-            await prefs.setString('name', name);
-            if (isAdmin) {
-              await prefs.setString('type', 'admin'); // Store user type as admin
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => AdminPanel()),
-              );
-            } else {
-              await prefs.setString('type', 'teacher'); // Store user type as teacher
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => DashboardScreen()),
-              );
-            }
-          } else {
-            setState(() {
-              errorMessage = 'No Admin/Teacher data found for this account.';
-            });
-            await _auth.signOut();
-          }
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('email', email);
+      
+      // Extract user data from response
+      final userData = response['user'];
+      final String userId = userData['_id'];
+      final String name = userData['name'] ?? 'User';
+      final bool isTeacher = userData['isTeacher'] ?? false;
+      final bool isAdmin = userData['isAdmin'] ?? false;
+      
+      // Save user data to shared preferences
+      await prefs.setString('uid', userId);
+      await prefs.setString('name', name);
+      
+      if (isTeacher) {
+        // Handle teacher/admin login
+        if (isAdmin) {
+          await prefs.setString('type', 'admin');
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => AdminPanel()),
+          );
         } else {
-          // Check Student Collection
-          QuerySnapshot studentQuery = await FirebaseFirestore.instance
-              .collection('students')
-              .where('email', isEqualTo: email)
-              .get();
-
-          if (studentQuery.docs.isNotEmpty) {
-            String studentId = studentQuery.docs[0].id;
-            String studentName = studentQuery.docs[0]['name'] ?? 'Student';
-
-            await prefs.setString('studentId', studentId);
-            await prefs.setString('name', studentName);
-            await prefs.setString('type', 'student');
-
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => studentDashboard(studentId: studentId),
-              ),
-            );
-          } else {
-            setState(() {
-              errorMessage = 'No Student data found for this account.';
-            });
-            await _auth.signOut();
-          }
+          await prefs.setString('type', 'teacher');
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => DashboardScreen()),
+          );
         }
       } else {
-        setState(() {
-          errorMessage = 'Login Failed. Please check your credentials.';
-        });
+        // Handle student login
+        await prefs.setString('studentId', userId);
+        await prefs.setString('type', 'student');
+        
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => studentDashboard(studentId: userId),
+          ),
+        );
       }
-    } on FirebaseAuthException catch (e) {
+    } catch (e) {
       setState(() {
-        errorMessage = e.message ?? 'Login Failed. Please check your credentials.';
+        errorMessage = e.toString().contains('Exception:')
+            ? e.toString().split('Exception: ')[1]
+            : 'Login Failed. Please check your credentials.';
       });
     } finally {
       setState(() {
